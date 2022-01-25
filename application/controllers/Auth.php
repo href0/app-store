@@ -31,26 +31,12 @@ class Auth extends CI_Controller
             if ($user) {
                 // check password
                 if (password_verify($password, $user['password'])) {
-                    if ($user['user_role'] == '1' || $user['user_role'] == '2') {
-                        $dataSession = [
-                            'role'          => $user['user_role'],
-                            'user_id'       => $user['user_id'],
-                            'username'      => $user['username'],
-                            'bengkel_id'    => ''
-                        ];
-                        $this->session->set_userdata('login_session', $dataSession);
-                        redirect('bengkel');
-                    } else {
-                        $bengkel =  $this->db->get_where('bengkel', ['user_id' => $user['user_id']])->row_array();
-                        $dataSession = [
-                            'role'          => $user['user_role'],
-                            'user_id'       => $user['user_id'],
-                            'username'      => $user['username'],
-                            'bengkel_id'    => $bengkel['bengkel_id']
-                        ];
-                        $this->session->set_userdata('login_session', $dataSession);
-                        redirect('pkl');
-                    }
+
+                    $dataSession = [
+                        'username'      => $user['username'],
+                    ];
+                    $this->session->set_userdata('login_session', $dataSession);
+                    redirect('barang');
                 } else {
                     $this->session->set_flashdata(
                         'message',
