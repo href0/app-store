@@ -108,4 +108,23 @@ class Barang extends CI_Controller
             }
         }
     }
+
+    public function delete($barang_id = null)
+    {
+
+        $delete = $this->db->where('barang_id', $barang_id)->delete('barang');
+        if ($delete == 1) {
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success" role="alert">barang berhasil dihapus</div>'
+            );
+            redirect('barang');
+        } else {
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-danger" role="alert">Terjadi kesalahan</div>'
+            );
+            redirect('barang');
+        }
+    }
 }

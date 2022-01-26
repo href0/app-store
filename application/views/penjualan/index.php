@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-header">
-        <!-- <?= $this->session->flashdata('message') ?>
-        <?php unset($_SESSION['message']) ?> -->
+        <?= $this->session->flashdata('message') ?>
+        <?php unset($_SESSION['message']) ?>
         <div class="float-sm-right">
             <a href="<?= base_url('penjualan/add') ?>" class="btn btn-primary">+ Tambah Penjualan</a>
         </div>
@@ -31,7 +31,10 @@
                         <!-- <td style="text-align: center;"><img src="<?= base_url('assets/pictures/') . $row['foto'] ?>" class="rounded float-right" width="100px" height="100px" alt=""></img></td> -->
 
                         <!-- <td class="align-middle"><a href="https://www.imei.info/api/imei/docs/" class="btn btn-primary">Cek disini</a></td> -->
-                        <td>Aksi</td>
+                        <td class="align-middle">
+                            <a href="<?= base_url('penjualan/edit/') . $row['penjualan_id'] ?>" class="badge bg-success">Ubah</a>
+                            <a onClick="return confirm('Yakin ingin menghapus penjualan ini ?')" href="<?= base_url('penjualan/delete/') . $row['penjualan_id'] ?>" class="badge bg-danger">Hapus</a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

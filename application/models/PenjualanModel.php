@@ -20,7 +20,12 @@ class PenjualanModel extends CI_Model
 
     public function insert($data)
     {
-         $this->db->insert('penjualan', $data);
+        $this->db->insert('penjualan', $data);
         return $this->db->insert_id();
+    }
+
+    public function update($data, $penjualan_id)
+    {
+        return  $this->db->set($data)->where('penjualan_id', $penjualan_id)->update('penjualan');
     }
 }

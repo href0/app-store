@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-header">
-        <!-- <?= $this->session->flashdata('message') ?>
-        <?php unset($_SESSION['message']) ?> -->
+        <?= $this->session->flashdata('message') ?>
+        <?php unset($_SESSION['message']) ?>
         <div class="float-sm-right">
             <a href="<?= base_url('barang/add') ?>" class="btn btn-primary">+ Tambah</a>
         </div>
